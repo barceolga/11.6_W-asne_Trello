@@ -1,4 +1,36 @@
 $(function() {
+/*
+  var supportedFlag = $.keyframe.isSupported();
+  $.keyframe.debug = true;
+
+ $.keyframe.define([{
+    name: 'card-animation',
+    '0%': {
+        'background-color': '#D7BCEC',
+        'color' : '#5F2900',
+        'transform': 'matrix(1, 0, 0, 1, 0, 0 )'
+    },
+    '25%': {
+        'background-color': '#ac74d8',
+        'color' : '#cc5800',
+        'transform': 'matrix(1.25, 0, 0.25, 1.25, 0, 0 )'
+    },
+    '50%': {
+        'background-color': '#ac74d8',
+        'color' : '#ffb780',
+        'transform': 'matrix(1.5, 0, 0.5, 1.5, 0, 0 )'
+    },
+    '75%': {
+        'background-color': '#ac74d8',
+        'color' : '#cc5800',
+        'transform': 'matrix(1.25, 0, 0.25, 1.25, 0, 0 )'
+    },
+    '100%': {
+        'background-color': '#D7BCEC',
+        'color' : '#5F2900',
+        'transform': 'matrix(1, 0, 0, 1, 0, 0 )'
+    }
+ }]);*/
 
   function randomString() {
     var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ';
@@ -10,11 +42,26 @@ $(function() {
   }
 
   function initSortable() {
+    var self = this;
     $('.column-card-list').sortable({
+      delay: 150,
       opacity: 0.4,
       connectWith: '.column-card-list',
-      placeholder: 'card-placeholder'
+      placeholder: 'card-placeholder',
+      change: function( click, item ) {
+        self.$('.column-card-list .card').addClas('card-animated');
+
+        /*playKeyframe({
+          name: "card-animation",
+          duration: "1s",
+          timingFunction: 'ease',
+          direction: 'normal',
+          fillMode: 'forwards',
+          complete: increment
+        });*/
+      }
     }).disableSelection();
+
   }
 
   function Column(name) {
@@ -71,7 +118,7 @@ $(function() {
       // CREATING THE BLOCKS
       var $card = $('<li>').addClass('card');
       var $cardDescription = $('<p>').addClass('card-description').text(self.description);
-      var $cardDelete = $('<button>').addClass('btn-delete').text('x');
+      var $cardDelete = $('<button>').addClass('card-btn-delete').text('x');
 
       // BINDING TO CLICK EVENT
       $cardDelete.click(function(){
