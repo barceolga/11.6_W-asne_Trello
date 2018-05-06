@@ -48,9 +48,6 @@ $(function() {
       opacity: 0.4,
       connectWith: '.column-card-list',
       placeholder: 'card-placeholder',
-      change: function( event, ui ) {
-        $('.column-card-list .card').addClas('card-animated');
-
         /*playKeyframe({
           name: "card-animation",
           duration: "1s",
@@ -59,9 +56,11 @@ $(function() {
           fillMode: 'forwards',
           complete: increment
         });*/
-      }
-    }).disableSelection();
 
+    }).disableSelection();
+    $('.column-card-list .card').click(function() {
+      $('.column-card-list .card').addClass('card-animated');
+      });
   }
 
   function Column(name) {
