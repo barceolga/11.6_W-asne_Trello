@@ -48,8 +48,8 @@ $(function() {
       opacity: 0.4,
       connectWith: '.column-card-list',
       placeholder: 'card-placeholder',
-      change: function( click, item ) {
-        self.$('.column-card-list .card').addClas('card-animated');
+      change: function( event, ui ) {
+        $('.column-card-list .card').addClas('card-animated');
 
         /*playKeyframe({
           name: "card-animation",
