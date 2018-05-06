@@ -1,11 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900');
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono');
+
+$Mont_font: "Montserrat", sans-serif;
+$Fira_font: "Fira Mono", monospace;
+$dark-violet: #250240;
+$ligth-sun: #FFFDC7;
+
 * {
   box-sizing: border-box;
 }
 body {
-    background-color: #9EE7FF;
+    background-color: #B5E1DE;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .btn-delete {
+      height: 40px;
+      width: 40px;
+      text-align: center;
+      border-radius: 10%;
+      border: none;
+      background-color: $dark-violet;
+      color: #B5E1DE;
+      font-size: 14px;
+      font-family: $Fira_font;
+      font-weight: 800;
+      padding: 10px;
+      text-transform: uppercase;
+    }
 
   .board {
     height: 100vh;
@@ -16,48 +39,57 @@ body {
     align-items: center;
 
       h1 {
-        font-size: 45px;
+        width: 300px;
+        background-color: #48A7A0;
+        font-size: 50px;
+        padding: 25px;
         font-style: italic;
         font-weight: 800;
-        color: #045757;
+        color: #003B37;
+        text-shadow: 2px 2px 2px $ligth-sun;
         text-transform: capitalize;
-        text-shadow: 1px 1px 1px #F3A462;
-
+        text-align: center;
+        text-transform: capitalize;
       }
 
     .create-column {
-      margin: 25px auto;
-      border-radius:15%;
+      height: 60px;
+      margin: 50px auto 50px auto;
+      border-radius: 5%;
       border: none;
       text-align: center;
-      background-color: #F3A462;
-      color: #045757;
+      background-color: $ligth-sun;
+      color: #003B37;
       font-size: 18px;
-      font-family: monospace;
+      font-family: $Fira_font;
       font-weight: 800;
       padding: 15px;
     }
 
     .column-container {
-        margin-top: 100px;
+        margin: 200px 50px 0 50px;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 85vh;
-        width: 100vw;
+        width: 99vw;
 
           .column {
             position: relative;
             height: 85vh;
             width: 33vw;
-            background-color: #F3A462;
-            border: 5px solid #920606;
+            background-color: $ligth-sun;
+            border: 5px solid $dark-violet;
 
               .column-title {
+                width: 100%;
+                height: auto;
+                background-color: #9657C6;
                 font-size: 25px;
-                font-family: monospace;
+                font-family: $Fira_font;
                 text-transform: uppercase;
-                color: #920606;
+                color: $dark-violet;
+                text-shadow: 2px 2px 2px $ligth-sun;
                 font-weight: 900;
                 text-align: center;
                 padding: 15px;
@@ -66,67 +98,88 @@ body {
               .column-card-list {
                 list-style-type: none;
                 display: inline-block;
+                margin-right: 100px;
                 min-height: 64vh;
-                min-width: 30vw;
-                border: 10px solid red;
+                min-width: 28vw;
 
                   .card {
-                    margin: 0 auto;
-                    width: 30vw;
-                    border: 2px solid #B81C1C;
-                    background-color: #32A632;
+                    margin-right: 50px;
+                    min-height: 10vh;
+                    width: 28vw;
+                    border-radius: 5%;
+                    background-color: #D7BCEC;
 
                     .card-description {
                       font-size: 16px;
-                      font-family: sans-serif;
-                      font-weight: 500;
-                      color: #431E00;
+                      font-family: $Mont_font;
+                      font-weight: 600;
+                      color: #5F2900;
+                      text-shadow: 2px 1px #FFFDCC;
                       text-align: center;
                       padding: 10px;
                       margin-top: 0;
                     }
 
-                    .btn-delete {
-                      margin: 0 auto;
-                      border-radius: 10%;
-                      border: none;
-                      background-color: #D0813F;
-                      color: #045757;
-                      font-size: 14px;
-                      font-family: monospace;
-                      font-weight: 800;
-                      padding: 15px;
-                      text-transform: uppercase;
+                    .card-btn-delete {
+                      @extend .btn-delete;
+                      margin: 0;
+                    }
+
+                    @keyframes card-animation {
+                      0% {
+                          background-color: #D7BCEC;
+                          color : #5F2900;
+                          transform: matrix(1, 0, 0, 1, 0, 0 );
+                      }
+                      25% {
+                          background-color: #ac74d8;
+                          color : #cc5800;
+                          transform: matrix(1.25, 0, 0.25, 1.25, 0, 0 );
+                      }
+                      50% {
+                          background-color: #ac74d8;
+                          color: #ffb780;
+                          transform: matrix(1.5, 0, 0.5, 1.5, 0, 0 );
+                      }
+                      75% {
+                          background-color: #ac74d8;
+                          color : #cc5800;
+                          transform: matrix(1.25, 0, 0.25, 1.25, 0, 0 );
+                      }
+                      100% {
+                          background-color: #D7BCEC;
+                          color: #5F2900;
+                          transform: matrix(1, 0, 0, 1, 0, 0 );
+                      }
+                    }
+                    .card-animated {
+                      -webkit-animation: card-animation 1s ease-in-out 5s 1 normal;
+                      transition: 1s linear;
                     }
                   }
               }
 
               .column-btn-delete {
+                @extend .btn-delete;
                 margin: 0 10px;
-                border-radius: 10%;
-                border: none;
-                background-color: #D0813F;
-                color: #045757;
-                font-size: 14px;
-                font-family: monospace;
-                font-weight: 800;
-                padding: 15px;
-                text-transform: uppercase;
               }
+
               .add-card {
-                @extend .column-btn-delete;
-                font-size: 18px;
-                background-color: #116A6A;
-                color: #F3A462;
+                @extend .create-column;
+                margin: 0 auto;
+                background-color: #48A7A0;
+                color: #003B37;
+                text-shadow: 2px 2px 2px $ligth-sun;
                 text-transform: none;
               }
             }
         }
 
       .card-placeholder {
-        width: 30vw;
-        border: 2px dotted #6D0000;
-        background-color: #6FD36F;
+        width: 28vw;
+        min-height: 10vh;
+        border: 2px dotted #026A62;
+        background-color: #B5E1DE;
         }
     }
 }
