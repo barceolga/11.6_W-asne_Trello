@@ -19,7 +19,6 @@ body .btn-delete, body .board .column-container .column .column-card-list .card 
   width: 40px;
   text-align: center;
   border-radius: 10%;
-  border: none;
   background-color: #250240;
   color: #B5E1DE;
   font-size: 14px;
@@ -27,6 +26,13 @@ body .btn-delete, body .board .column-container .column .column-card-list .card 
   font-weight: 800;
   padding: 10px;
   text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.7s;
+}
+
+body .btn-delete:hover, body .board .column-container .column .column-card-list .card .card-btn-delete:hover, body .board .column-container .column .column-btn-delete:hover {
+  background-color: #bc6bfa;
+  color: #250240;
 }
 
 body .board {
@@ -45,6 +51,8 @@ body .board {
 body .board h1 {
   width: 300px;
   background-color: #48A7A0;
+  border: 5px solid #003B37;
+  box-shadow: 2px 2px 2px #FFFDC7;
   font-size: 50px;
   padding: 25px;
   font-style: italic;
@@ -57,17 +65,24 @@ body .board h1 {
 }
 
 body .board .create-column, body .board .column-container .column .add-card {
-  height: 60px;
+  height: 100px;
   margin: 50px auto 50px auto;
   border-radius: 5%;
   border: none;
   text-align: center;
-  background-color: #FFFDC7;
-  color: #003B37;
+  background-color: #003B37;
+  color: #FFFDC7;
   font-size: 18px;
   font-family: "Fira Mono", monospace;
   font-weight: 800;
   padding: 15px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+body .board .create-column:hover, body .board .column-container .column .add-card:hover {
+  background-color: #FFFDC7;
+  color: #003B37;
 }
 
 body .board .column-container {
@@ -91,9 +106,11 @@ body .board .column-container .column {
 }
 
 body .board .column-container .column .column-title {
+  margin-top: 0;
   width: 100%;
   height: auto;
-  background-color: #9657C6;
+  background-color: #ac74d8;
+  border-bottom: 2px solid #250240;
   font-size: 25px;
   font-family: "Fira Mono", monospace;
   text-transform: uppercase;
@@ -118,13 +135,14 @@ body .board .column-container .column .column-card-list .card {
   width: 28vw;
   border-radius: 5%;
   background-color: #D7BCEC;
+  border: 2px solid #ac74d8;
 }
 
 body .board .column-container .column .column-card-list .card .card-description {
   font-size: 16px;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  color: #5F2900;
+  color: #250240;
   text-shadow: 2px 1px #FFFDCC;
   text-align: center;
   padding: 10px;
@@ -133,6 +151,33 @@ body .board .column-container .column .column-card-list .card .card-description 
 
 body .board .column-container .column .column-card-list .card .card-btn-delete {
   margin: 0;
+}
+
+body .board .column-container .column .column-btn-delete {
+  margin: 0 10px;
+}
+
+body .board .column-container .column .add-card {
+  height: 60px;
+  margin: 0 auto;
+  background-color: #48A7A0;
+  color: #FFFDC7;
+  text-transform: none;
+  transition: 0.5s;
+  text-shadow: 2px 2px 2px #250240;
+}
+
+body .board .column-container .column .add-card:hover {
+  background-color: #a6d9d6;
+  color: #003B37;
+  text-shadow: none;
+}
+
+body .board .card-placeholder {
+  width: 28vw;
+  min-height: 10vh;
+  border: 2px dotted #026A62;
+  background-color: #B5E1DE;
 }
 
 @keyframes card-animation {
@@ -163,27 +208,8 @@ body .board .column-container .column .column-card-list .card .card-btn-delete {
   }
 }
 
-body .board .column-container .column .column-card-list .card .card-animated {
-  -webkit-animation: card-animation 1s ease-in-out 5s 1 normal;
-  transition: 1s linear;
-}
-
-body .board .column-container .column .column-btn-delete {
-  margin: 0 10px;
-}
-
-body .board .column-container .column .add-card {
-  margin: 0 auto;
-  background-color: #48A7A0;
-  color: #003B37;
-  text-shadow: 2px 2px 2px #FFFDC7;
-  text-transform: none;
-}
-
-body .board .card-placeholder {
-  width: 28vw;
-  min-height: 10vh;
-  border: 2px dotted #026A62;
-  background-color: #B5E1DE;
+body .board .ui-sortable-helper {
+  animation: card-animation 1s ease-in-out 1s infinite normal;
+  transition: background-color 1s linear, color 1s linear, transform 1s linear;
 }
 /*# sourceMappingURL=style.css.map */

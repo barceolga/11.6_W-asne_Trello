@@ -20,7 +20,6 @@ body {
       width: 40px;
       text-align: center;
       border-radius: 10%;
-      border: none;
       background-color: $dark-violet;
       color: #B5E1DE;
       font-size: 14px;
@@ -28,6 +27,12 @@ body {
       font-weight: 800;
       padding: 10px;
       text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.7s;
+      &:hover{
+        background-color: #bc6bfa;
+        color: $dark-violet;
+      }
     }
 
   .board {
@@ -41,6 +46,8 @@ body {
       h1 {
         width: 300px;
         background-color: #48A7A0;
+        border: 5px solid #003B37;
+        box-shadow: 2px 2px 2px $ligth-sun;
         font-size: 50px;
         padding: 25px;
         font-style: italic;
@@ -53,17 +60,23 @@ body {
       }
 
     .create-column {
-      height: 60px;
+      height: 100px;
       margin: 50px auto 50px auto;
       border-radius: 5%;
       border: none;
       text-align: center;
-      background-color: $ligth-sun;
-      color: #003B37;
+      background-color: #003B37;
+      color: $ligth-sun;
       font-size: 18px;
       font-family: $Fira_font;
       font-weight: 800;
       padding: 15px;
+      cursor: pointer;
+      transition: 0.5s;
+          &:hover {
+            background-color: $ligth-sun;
+            color: #003B37;
+          }
     }
 
     .column-container {
@@ -82,9 +95,11 @@ body {
             border: 5px solid $dark-violet;
 
               .column-title {
+                margin-top: 0;
                 width: 100%;
                 height: auto;
-                background-color: #9657C6;
+                background-color: #ac74d8;
+                border-bottom: 2px solid $dark-violet;
                 font-size: 25px;
                 font-family: $Fira_font;
                 text-transform: uppercase;
@@ -108,12 +123,13 @@ body {
                     width: 28vw;
                     border-radius: 5%;
                     background-color: #D7BCEC;
+                    border: 2px solid #ac74d8;
 
                     .card-description {
                       font-size: 16px;
                       font-family: $Mont_font;
                       font-weight: 600;
-                      color: #5F2900;
+                      color: $dark-violet;
                       text-shadow: 2px 1px #FFFDCC;
                       text-align: center;
                       padding: 10px;
@@ -125,37 +141,7 @@ body {
                       margin: 0;
                     }
 
-                    @keyframes card-animation {
-                      0% {
-                          background-color: #D7BCEC;
-                          color : #5F2900;
-                          transform: matrix(1, 0, 0, 1, 0, 0 );
-                      }
-                      25% {
-                          background-color: #ac74d8;
-                          color : #cc5800;
-                          transform: matrix(1.25, 0, 0.25, 1.25, 0, 0 );
-                      }
-                      50% {
-                          background-color: #ac74d8;
-                          color: #ffb780;
-                          transform: matrix(1.5, 0, 0.5, 1.5, 0, 0 );
-                      }
-                      75% {
-                          background-color: #ac74d8;
-                          color : #cc5800;
-                          transform: matrix(1.25, 0, 0.25, 1.25, 0, 0 );
-                      }
-                      100% {
-                          background-color: #D7BCEC;
-                          color: #5F2900;
-                          transform: matrix(1, 0, 0, 1, 0, 0 );
-                      }
-                    }
-                    .card-animated {
-                      -webkit-animation: card-animation 1s ease-in-out 5s 1 normal;
-                      transition: 1s linear;
-                    }
+
                   }
               }
 
@@ -166,11 +152,18 @@ body {
 
               .add-card {
                 @extend .create-column;
+                height: 60px;
                 margin: 0 auto;
                 background-color: #48A7A0;
-                color: #003B37;
-                text-shadow: 2px 2px 2px $ligth-sun;
+                color: $ligth-sun;
                 text-transform: none;
+                transition: 0.5s;
+                text-shadow: 2px 2px 2px $dark-violet;
+                   &:hover{
+                     background-color: #a6d9d6;
+                     color: #003B37;
+                     text-shadow: none;
+                   }
               }
             }
         }
@@ -180,6 +173,39 @@ body {
         min-height: 10vh;
         border: 2px dotted #026A62;
         background-color: #B5E1DE;
+        }
+
+        @keyframes card-animation {
+          0% {
+              background-color: #D7BCEC;
+              color : #5F2900;
+              transform: matrix(1, 0, 0, 1, 0, 0 );
+          }
+          25% {
+              background-color: #ac74d8;
+              color : #cc5800;
+              transform: matrix(1.25, 0, 0.25, 1.25, 0, 0 );
+          }
+          50% {
+              background-color: #ac74d8;
+              color: #ffb780;
+              transform: matrix(1.5, 0, 0.5, 1.5, 0, 0 );
+          }
+          75% {
+              background-color: #ac74d8;
+              color : #cc5800;
+              transform: matrix(1.25, 0, 0.25, 1.25, 0, 0 );
+          }
+          100% {
+              background-color: #D7BCEC;
+              color: #5F2900;
+              transform: matrix(1, 0, 0, 1, 0, 0 );
+          }
+        }
+
+        .ui-sortable-helper {
+          animation: card-animation 1s ease-in-out 1s infinite normal;
+          transition: background-color 1s linear, color 1s linear, transform 1s linear;
         }
     }
 }
